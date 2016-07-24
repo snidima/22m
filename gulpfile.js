@@ -15,6 +15,7 @@ var autoprefixer = require('gulp-autoprefixer');//https://www.npmjs.com/package/
 var cleanCSS = require('gulp-clean-css');//https://github.com/scniro/gulp-clean-css
 var htmlmin = require('gulp-htmlmin');//https://github.com/jonschlinkert/gulp-htmlmin
 var babel = require('gulp-babel');
+var gs = require('gulp-selectors');//https://www.npmjs.com/package/gulp-selectors
 
 var paths = {
   sass:{
@@ -39,20 +40,31 @@ var production = {
     folder:'./production',
     css:   './production/styles',
     js:    './production/js',
-    html:  './production'
+    html:  './production',
+    images: './production/images'
 };
 
 ///////////////////////PRODUCTION///////////////////////
+gulp.task('images:prod', ['clean:images'],function () {
+    return gulp.src(paths.images.src)
+        .pipe(imagemin())
+        .pipe(gulp.dest(production.images))
+});
 gulp.task('production:clean', function () {
     return gulp.src(production.folder, {read: false})
         .pipe(clean());
 });
-gulp.task('html:prod', function() {
+gulp.task('jade:prod', function() {
     return gulp.src(paths.templates.src)
         .pipe(plumber())
         .pipe(jade())
         .pipe(htmlmin({collapseWhitespace: true, removeComments: true}))
         .pipe(gulp.dest(production.html))
+});
+gulp.task('html:prod',['jade:prod', 'sass:prod'], function() {
+    return gulp.src(['./production/styles/*.css','./production/*.html'])
+        .pipe(gs.run())
+        .pipe(gulp.dest('dist'))
 });
 gulp.task('scripts:prod', function() {
     return gulp.src(paths.scripts.src)
@@ -68,14 +80,14 @@ gulp.task('scripts:prod', function() {
         .pipe(uglify({mangle: {toplevel: true}}))
         .pipe(gulp.dest(production.js));
 });
-gulp.task('css:prod', function () {
+gulp.task('sass:prod', function () {
     return gulp.src(paths.sass.src)
         .pipe(plumber())
         .pipe(sass({
             indentedSyntax: true
         }).on('error', sass.logError))
         .pipe(autoprefixer({ browsers: ['> 1%', 'IE 7'], cascade: false }))
-        .pipe(cleanCSS())
+        .pipe(cleanCSS({keepSpecialComments : 0}))
         .pipe(gulp.dest(production.css));
 });
 ///////////////////////PRODUCTION///////////////////////
@@ -153,5 +165,5 @@ gulp.task('serve', ['sass','images','jade','scripts'], function() {
     gulp.watch("./public/**/*").on('change', browserSync.reload);
 });
 gulp.task('default', ['serve']);
-gulp.task('production', ['production:clean','html:prod','scripts:prod','css:prod']);
+gulp.task('production', ['html:prod','scripts:prod','images:prod']);
 ///////////////////////MAIN///////////////////////
