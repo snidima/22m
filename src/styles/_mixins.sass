@@ -18,3 +18,13 @@
 		background: darken($color, 3%)
 	&:active
 		background: darken($color, 5%)
+=transition()
+	transition: all 0.1s linear
+
+=margin-right($val:null)
+	@if $val
+		&:not(:last-of-type)
+			margin-right: $val
+	@else
+		&:not(:last-of-type)
+			margin-right: 10px

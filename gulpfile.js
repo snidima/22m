@@ -14,6 +14,7 @@ var uglify = require('gulp-uglify');//https://www.npmjs.com/package/gulp-uglify
 var autoprefixer = require('gulp-autoprefixer');//https://www.npmjs.com/package/gulp-autoprefixer
 var cleanCSS = require('gulp-clean-css');//https://github.com/scniro/gulp-clean-css
 var htmlmin = require('gulp-htmlmin');//https://github.com/jonschlinkert/gulp-htmlmin
+var babel = require('gulp-babel');
 
 var paths = {
   sass:{
@@ -106,7 +107,13 @@ gulp.task('clean:styles', function () {
 gulp.task('scripts', function() {
     return gulp.src(paths.scripts.src)
         .pipe(plumber())
-        .pipe(browserify({transform:'reactify'}))
+        .pipe(babel({
+            presets: ['es2015','es2016'],
+            "plugins": [
+                ["transform-react-jsx"]
+            ]
+        }))
+        .pipe(browserify())
         .pipe(rename('app.js'))
         .pipe(gulp.dest(paths.scripts.dist));
 });
@@ -131,7 +138,8 @@ gulp.task('jade', function() {
 gulp.task('serve', ['sass','images','jade','scripts'], function() {
     browserSync.init({
         server: "./public",
-        port: 8080
+        port: 8080,
+        notify: false
     });
     gulp.watch('./src/styles/**/*', ['sass']);
     gulp.watch('./src/templates/**/*', ['jade']);
