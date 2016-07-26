@@ -92,7 +92,7 @@
 .popup__image
 	width: 350px
 	position: relative
-	background-image: url(../images/t-shirt.jpg)
+	background-image: url(../images/t-shirt-2.jpg)
 	background-size: cover
 	background-position: 50% 50%
 	background-repeat: no-repeat
@@ -149,22 +149,24 @@
 	justify-content: center
 	bottom: 0
 	padding: 5% 0
+	flex-wrap: wrap
 
 .popup-image-control__item
-	$size: 50px
+	$size: 70px
 	width:  $size
 	height: $size
 	background: #fff
-	background-image: url(../images/t-shirt.jpg)
+	background-image: url(../images/t-shirt-2.jpg)
 	background-size: cover
 	background-position: 50% 50%
 	background-repeat: no-repeat
 	+margin-right(10px)
-	border: 2px transparent solid
+	border-radius: 50%
+	border: 2px solid rgba(#fff,.4)
 	cursor: pointer
-	+transition()
+	+transition(0.05s)
 	&:hover
-		border: 2px $main-color-2 solid
+		box-shadow: 0 0 15px $main-color-1
 
 .popup-image-control__item[data-active="true"]
-	border: 2px $main-color-2 solid
+	box-shadow: 0 0 15px $main-color-1
