@@ -98,16 +98,21 @@
 	background-repeat: no-repeat
 
 .popup__close
+	$size: 10px
+	$offset: 8px
 	position: absolute
-	top: -5px
-	right: 5px
-	transform: rotate(45deg)
+	top: $offset
+	right: $offset
 	font-weight: bold
 	font-size: 28px
 	color: #a6a6a6
 	cursor: pointer
+	width:  $size
+	height: $size
+	border-radius: 50%
+	background: $main-color-2
 	&:hover
-		color: #888888
+		background: darken($main-color-2, 10%)
 
 
 
