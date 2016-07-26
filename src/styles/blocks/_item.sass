@@ -21,10 +21,11 @@ $start-opacity: 0.25
 	background: lighten($menu-bg, 5%)
 	box-shadow: 0 0 20px rgba(40, 194, 253, 0)
 	+transition()
-	&:hover
-		box-shadow: 0 0 30px rgba(0, 153, 253, 0.45)
 
-
+.t-shirt-item[data-sex="male"]:hover
+	box-shadow: 0 0 30px rgba($male-color,0.9)
+.t-shirt-item[data-sex="female"]:hover
+	box-shadow: 0 0 30px rgba($female-color,0.6)
 
 .t-shirt-item__header
 	display: flex
@@ -35,9 +36,12 @@ $start-opacity: 0.25
 	padding: 5px 10px
 
 .t-shirt-header-text__big
-	color: #64caff
 	font-weight: bold
 	font-size: 15px
+.t-shirt-item[data-sex="male"] .t-shirt-header-text__big
+	color: $male-color
+.t-shirt-item[data-sex="female"] .t-shirt-header-text__big
+	color: $female-color
 
 .t-shirt-header-text__small
 	font-size: 12px
@@ -57,16 +61,20 @@ $start-opacity: 0.25
 		height: 100%
 	path
 		fill: none
-		stroke: #64caff
 		stroke-width: 3
-	&:hover
-		path
-			fill: #64caff
 	&:active
 		svg
 			transform: scale(1.15,1.15)
 
+.t-shirt-item[data-sex="male"] .t-shirt-header__fav path
+	stroke: $male-color
+.t-shirt-item[data-sex="male"] .t-shirt-header__fav:hover path
+	fill: $male-color
 
+.t-shirt-item[data-sex="female"] .t-shirt-header__fav path
+	stroke: $female-color
+.t-shirt-item[data-sex="female"] .t-shirt-header__fav:hover path
+	fill: $female-color
 
 .t-shirt-item__content
 	background-image: url(../images/t-shirt.jpg)
@@ -235,16 +243,28 @@ $start-opacity: 0.25
 	color: #cacaca
 	font-size: 13px
 	font-weight: lighter
-	cursor: pointer
-.t-shirt-item-footer__action-1:hover, .t-shirt-item-footer__action-2:hover
+.t-shirt-item-footer__action-1[data-active="true"] .t-shirt-item-footer-action-1__text:hover,
+.t-shirt-item-footer__action-2:hover
 	color: #ffffff
-	&:hover
-		//text-decoration: underline
 .t-shirt-item-footer__action-1[data-active="false"]
-	color: #565656
-	cursor: default
+	.t-shirt-item-footer-action-1__text
+		color: #676767
+		cursor: default
+	.t-shirt-item-footer-action-1__price
+		display: none
 	&:hover
 		text-decoration: none
+
+.t-shirt-item-footer-action-1__text, .t-shirt-item-footer-action-1__price
+	display: inline-block
+
+
+.t-shirt-item-footer-action-1__text, .t-shirt-item-footer__action-2
+	cursor: pointer
+
+.t-shirt-item-footer-action-1__price
+	color: #fd951a
+
 
 .item-more
 	display: block

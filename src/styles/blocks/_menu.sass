@@ -32,13 +32,14 @@
 	text-decoration: none
 	display: inline-block
 	color: invert($menu-bg)
-	font-size: 15px
+	font-size: 16px
+	font-weight: lighter
 	padding: $menu-height-pading 5px
 
 
 
 .navigation-search-form
-	height: 30px
+	height: 35px
 	font-size: 14px
 	display: flex
 .navigation-search-form__input
@@ -61,7 +62,7 @@
 	display: flex
 	vertical-align: middle
 	height: 100%
-	width: 40px
+	width: 38px
 	padding: 8px
 	border: none
 	cursor: pointer
@@ -84,13 +85,17 @@
 	align-items: center
 
 .navigation-user-item
+	$size: 26px
 	+margin-right(15px)
 	position: relative
-	width:  24px
-	height: 24px
-	display: block
+	width:  $size
+	height: $size
 	cursor: pointer
 	+transition(0.08s)
+	svg
+		width: 100%
+		height: 100%
+		display: block
 	path
 		fill: invert($menu-bg)
 	&:hover
@@ -133,12 +138,13 @@
 
 .navigation-sub-menu
 	transform: scale(0,0)
-	top: 84px
+	top: 86px
 	position: absolute
 	display: flex
-	background: $header-bg
+	background: rgba($header-bg, 0.97)
 	opacity: 0
 	transition: opacity 0.1s linear
+
 
 
 .navigation-sub-menu-list-wrap
@@ -147,19 +153,27 @@
 
 .navigation-sub-menu-list-link__a
 	color: darken(invert($menu-bg), 25%)
-	font-size: 13px
+	font-size: 14px
 	white-space: nowrap
+	font-weight: lighter
 	&:hover
 		color: invert($menu-bg)
+	&:before
+		content: '-'
+		display: inline-block
+		padding-right: 4px
+		color: $main-color-2
 
 .navigation-sub-menu-list-link
-
+	display: flex
+	&:not(:last-of-type)
+		margin-bottom: 3px
 
 
 .navigation-sub-menu-list__header
-	color: $main-color-1
+	color: $main-color-2
 	font-weight: bold
-	font-size: 15px
+	font-size: 16px
 	margin-bottom: 5px
 	text-align: center
 	white-space: nowrap
@@ -171,3 +185,4 @@
 	padding: 0
 	list-style-position: inside
 	list-style-type: none
+	display: inline

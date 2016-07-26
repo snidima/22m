@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "babel-plugin-transform-react-jsx": "^6.8.0",
-    "gulp-babel": "^6.1.2"
+    "gulp-babel": "^6.1.2",
+    "react-router": "^2.6.0"
   }
 }
