@@ -1,32 +1,28 @@
 $start-opacity: 0.25
 
 .item-container-wrap
-	background: #ffffff
-
+	background: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/symphony.png)
+	padding: 20px 0
+	
 .item-container
 
 	display: flex
 	flex-direction: row
 	flex-wrap: wrap
 	justify-content: flex-start
-	width: 1200px
+	width: 1197px
 	margin: 0 auto
-
-.item-text-big
-	text-align: center
-	padding: 8px 0
-	text-transform: uppercase
-	font-size: 30px
-	font-weight: lighter
-	background: #dbdbdb
-	color: #3e3e3e
 
 .t-shirt-item-wrap
 	width: 25%
 	padding: 10px
 
 .t-shirt-item
-	background: rgb(39, 39, 39)
+	background: lighten($menu-bg, 5%)
+	box-shadow: 0 0 20px rgba(40, 194, 253, 0)
+	+transition()
+	&:hover
+		box-shadow: 0 0 30px rgba(0, 153, 253, 0.45)
 
 
 
@@ -51,20 +47,24 @@ $start-opacity: 0.25
 
 .t-shirt-header__fav
 	$size: 22px
+	width:  $size
 	min-width:  $size
-	height: 100%
 	cursor: pointer
 	margin-left: 5px
 	svg
 		display: block
+		width: 100%
+		height: 100%
 	path
 		fill: none
 		stroke: #64caff
 		stroke-width: 3
 	&:hover
 		path
-			stroke: #64caff
 			fill: #64caff
+	&:active
+		svg
+			transform: scale(1.15,1.15)
 
 
 
@@ -73,7 +73,7 @@ $start-opacity: 0.25
 	background-size: cover
 	background-position: 50% 50%
 	background-repeat: no-repeat
-	height: 350px
+	height: 380px
 	position: relative
 	z-index: 1
 
@@ -232,10 +232,25 @@ $start-opacity: 0.25
 	flex-wrap: nowrap
 	justify-content: space-between
 	padding: 5px 10px
-	color: #e0e0e0
+	color: #cacaca
 	font-size: 13px
 	font-weight: lighter
 	cursor: pointer
 .t-shirt-item-footer__action-1:hover, .t-shirt-item-footer__action-2:hover
 	color: #ffffff
-	
+	&:hover
+		//text-decoration: underline
+.t-shirt-item-footer__action-1[data-active="false"]
+	color: #565656
+	cursor: default
+	&:hover
+		text-decoration: none
+
+.item-more
+	display: block
+	width: 100%
+	text-align: center
+	padding-top: 10px
+	padding-bottom: 10px
+	& > .btn:not(:last-of-type)
+		margin-right: 20px

@@ -1,6 +1,9 @@
 .header-contacts-wrap
-	background: #242424
-	padding: 5px 0
+	background: $header-bg
+	padding: $header-height-pading 0
+	//box-shadow: 0 0 20px rgba(0,0,0,0.35)
+	position: relative
+	z-index: 2
 
 .header-contacts
 	display: flex
@@ -8,14 +11,16 @@
 	justify-content: space-between
 	align-items: center
 .header-contacts__logo
-	font-size: 16px
-	font-weight: bold
-	& span:nth-of-type(1)
-		color: #ff2a00
-	& span:nth-of-type(2)
-		color: #ff8400
-	& span:nth-of-type(3)
-		color: #fff
+	$height: 20px
+	width: $height*5.23
+	height: $height
+	svg
+		display: block
+		width: 100%
+		height: 100%
+		padding: 2px 0
+
+
 
 
 
@@ -44,10 +49,10 @@
 	height: 16px
 	display: block
 	path
-		fill: #bdbdbd
+		fill: #ffffff
 
 .header-contacts-item__text
-	color: #aaa
+	color: #ffffff
 	font-size: 12px
 	padding-left: 3px
 
@@ -65,104 +70,10 @@
 	display: block
 	cursor: pointer
 	path
-		fill: #bdbdbd
+		fill: #ffffff
 	&:hover
 		path
 			fill: #e1e1e1
-
-.menu-block
-	background: #1b1b1b
-
-.navigation
-	display: flex
-	align-items: center
-	justify-content: space-between
-
-.navigation__menu
-	list-style: none
-	margin: 0
-	padding: 0
-
-
-.navigation__item
-	display: inline-block
-	&:not(:last-of-type)
-		padding-right: 10px
-	a
-		transition: all 0.065s linear
-		text-decoration: none
-		display: inline-block
-		color: #c9c9c9
-		font-size: 15px
-		padding: 25px 5px
-		&:hover
-			color: #ff6d00
-
-
-.navigation-search-form
-	height: 30px
-	font-size: 14px
-.navigation-search-form__input
-	+transition()
-	border: none
-	outline: none
-	display: inline-block
-	width: 200px
-	height: inherit
-	margin-right: 5px
-	padding-left:  12px
-	padding-right: 12px
-	background: #e6e6e6
-	&:focus
-		background: #fff
-.navigation-search-form__button
-	+transition()
-	outline: none
-	height: 100%
-	display: inline-block
-	padding-left:  10px
-	padding-right: 10px
-	border: none
-	background: #ff740c
-	color: #fff
-	&:hover
-		background: #ed6c0b
-
-
-.navigation__user
-	display: flex
-	align-items: center
-
-.navigation-user-item
-	+margin-right(15px)
-	position: relative
-	width:  26px
-	height: 26px
-	display: block
-	cursor: pointer
-	path
-		fill: #bdbdbd
-	&:hover
-		path
-			fill: #e1e1e1
-
-.navigation-user-item__count
-	position: absolute
-	font-size: 9px
-	display: flex
-	color: #fff
-	align-items: center
-	justify-content: center
-	width:  15px
-	height: 15px
-	+border-radius(50%)
-	background: #ff6d00
-	border: 1px solid #fff
-	top: -5px
-	right: -5px
-
-
-
-
+			
 
 

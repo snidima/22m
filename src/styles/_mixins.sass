@@ -11,15 +11,18 @@
 		border-radius: $border-radius
 
 
-=hover-bg($color)
+=hover-bg($color:null)
 	background: $color
 	cursor: pointer
 	&:hover
 		background: darken($color, 3%)
 	&:active
 		background: darken($color, 5%)
-=transition()
-	transition: all 0.1s linear
+=transition($time:null)
+	@if $time
+		transition: all $time linear
+	@else
+		transition: all 0.1s linear
 
 =margin-right($val:null)
 	@if $val
