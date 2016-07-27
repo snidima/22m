@@ -1,33 +1,18 @@
 import React from 'react'
 import { Router, Route, Link, browserHistory, hashHistory } from 'react-router'
 
-//React.render(
-//    <h1>test</h1>,
-//    document.getElementById('test')
-//);
 
-const Home = React.createClass({
-    render(){
-        return(
-            <h1>Home</h1>
-        )
+let els = document.querySelectorAll('.t-shirt-item-footer__action-2');
+let popup = document.querySelector('.popup-wrap');
+
+els.forEach(function( el ){
+    el.onclick = function(){
+        popup.setAttribute('data-active', 'true');
+        document.querySelector('body').style.overflow = 'hidden';
     }
 });
 
-const Tshirts = React.createClass({
-    render(){
-        return(
-            <h1>Tshirts</h1>
-        )
-    }
-});
-
-
-
-React.render(
-    <Router history={browserHistory}>
-        <Route path="/" component={Home} />
-        <Route path="/tshirts" component={Tshirts} />
-    </Router>,
-    document.getElementById('page')
-);
+document.querySelector('.popup__close').onclick = function(){
+    popup.setAttribute('data-active', 'false');
+    document.querySelector('body').style.overflow = 'scroll';
+};
