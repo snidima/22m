@@ -125,13 +125,11 @@ gulp.task('clean:styles', function () {
 gulp.task('scripts', function() {
     return gulp.src(paths.scripts.src)
         .pipe(plumber())
-        .pipe(babel({
-            presets: ['es2015','es2016'],
-            "plugins": [
-                ["transform-react-jsx"]
+        .pipe(browserify({
+            "transform": [
+                ["reactify", {"es6": true}]
             ]
         }))
-        .pipe(browserify())
         .pipe(rename('app.js'))
         .pipe(gulp.dest(paths.scripts.dist));
 });

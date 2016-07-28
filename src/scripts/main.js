@@ -1,18 +1,10 @@
-import React from 'react'
-import { Router, Route, Link, browserHistory, hashHistory } from 'react-router'
+/** @jsx React.DOM */
+const React = require('react');
+const tshirtsContainer = require('./components/tshirtsContainer.js');
 
 
-let els = document.querySelectorAll('.t-shirt-item-footer__action-2');
-let popup = document.querySelector('.popup-wrap');
 
-els.forEach(function( el ){
-    el.onclick = function(){
-        popup.setAttribute('data-active', 'true');
-        document.querySelector('body').style.overflow = 'hidden';
-    }
-});
-
-document.querySelector('.popup__close').onclick = function(){
-    popup.setAttribute('data-active', 'false');
-    document.querySelector('body').style.overflow = 'scroll';
-};
+React.render(
+    <tshirtsContainer />,
+    document.getElementById('sthirtsContainer')
+);
