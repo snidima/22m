@@ -69,13 +69,11 @@ gulp.task('jade:prod', function() {
 gulp.task('scripts:prod', function() {
     return gulp.src(paths.scripts.src)
         .pipe(plumber())
-        .pipe(babel({
-            presets: ['es2015','es2016'],
-            "plugins": [
-                ["transform-react-jsx"]
+        .pipe(browserify({
+            "transform": [
+                ["reactify", {"es6": true}]
             ]
         }))
-        .pipe(browserify())
         .pipe(rename('app.js'))
         .pipe(uglify({mangle: {toplevel: true}}))
         .pipe(gulp.dest(production.js));
