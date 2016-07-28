@@ -61,11 +61,11 @@ gulp.task('jade:prod', function() {
         .pipe(htmlmin({collapseWhitespace: true, removeComments: true}))
         .pipe(gulp.dest(production.html))
 });
-gulp.task('html:prod',['jade:prod', 'sass:prod'], function() {
-    return gulp.src(['./production/styles/*.css','./production/*.html'])
-        .pipe(gs.run())
-        .pipe(gulp.dest('dist'))
-});
+//gulp.task('html:prod',['jade:prod', 'sass:prod'], function() {
+//    return gulp.src(['./production/styles/*.css','./production/*.html'])
+//        .pipe(gs.run())
+//        .pipe(gulp.dest('dist'))
+//});
 gulp.task('scripts:prod', function() {
     return gulp.src(paths.scripts.src)
         .pipe(plumber())
@@ -165,5 +165,5 @@ gulp.task('serve', ['sass','images','jade','scripts'], function() {
     gulp.watch("./public/**/*").on('change', browserSync.reload);
 });
 gulp.task('default', ['serve']);
-gulp.task('production', ['html:prod','scripts:prod','images:prod']);
+gulp.task('production', ['jade:prod','sass:prod','scripts:prod','images:prod']);
 ///////////////////////MAIN///////////////////////
