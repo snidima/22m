@@ -1,11 +1,16 @@
 
 .menu-block
 	background: $menu-bg
+	position: relative
+	z-index: 2
+	box-shadow: 0 0 30px rgba(0,0,0,0.4)
+
 
 .navigation
 	display: flex
 	align-items: center
 	justify-content: space-between
+	height: $menu-height
 
 .navigation__menu
 	list-style: none
@@ -17,6 +22,7 @@
 	display: inline-block
 	position: relative
 	z-index: 2
+
 	&:not(:last-of-type)
 		padding-right: 10px
 	&:hover
@@ -24,22 +30,23 @@
 			opacity: 1
 			transform: scale(1,1)
 		.navigation-sub-menu-arrow svg path
-			fill: $main-color-2
+			fill: $menu-text-color-hover
 		.navigation-item-link
-			color: $main-color-2
+			color: $menu-text-color-hover
 .navigation-item-link
 	transition: all 0.065s linear
 	text-decoration: none
 	display: inline-block
-	color: invert($menu-bg)
-	font-size: 16px
-	font-weight: lighter
-	padding: $menu-height-pading 5px
+	color: $menu-text-color
+	font-size: $menu-font-size
+	//font-weight: lighter
+	vertical-align: middle
+	line-height: $menu-height
 
 
 
 .navigation-search-form
-	height: 35px
+	height: $menu-input-height
 	font-size: 14px
 	display: flex
 .navigation-search-form__input
@@ -51,33 +58,34 @@
 	display: block
 	padding-left:  12px
 	padding-right: 12px
-	background: #d5d5d5
-	font-size: 12px
+	background: $menu-input-bg
+	font-size: $menu-input-font-size
+	color: $menu-input-color
 	&:focus
-		background: #fff
+		background: $menu-input-bg-hover
 	&::-webkit-input-placeholder
-		color: #6f6f6f
+		color: $menu-input-placeholder-color
 .navigation-search-form__button
 	outline: none
 	display: flex
 	vertical-align: middle
 	height: 100%
-	width: 38px
+	width: $menu-input-height
 	padding: 8px
 	border: none
 	cursor: pointer
-	background: $main-color-2
-	color: #fff
+	background: $menu-input-btn-bg
+	color: $menu-input-btn-color
 	svg
 		width: 100%
 		height: 100%
 		display: block
 		path
-			fill: white
+			fill: $menu-input-btn-color
 	&:hover
-		background: darken($main-color-2, 5%)
+		background: darken($menu-input-btn-bg, 5%)
 	&:active
-		background: darken($main-color-2, 8%)
+		background: darken($menu-input-btn-bg, 8%)
 
 
 .navigation__user
@@ -97,51 +105,51 @@
 		height: 100%
 		display: block
 	path
-		fill: invert($menu-bg)
+		fill: $menu-user-color
 	&:hover
-		transform: scale(1.15,1.15)
+		transform: $menu-user-color-hover-size
 		path
-			fill: #e1e1e1
+			fill: $menu-user-color-hover
 
 .navigation-user-item__count
 	$size: 16px
 	position: absolute
 	font-size: 9px
 	display: flex
-	color: #fff
+	color: $menu-user-count-color
 	align-items: center
 	justify-content: center
 	width:  $size
 	height: $size
 	+border-radius(50%)
-	background: $main-color-2
-	border: 1px solid #fff
+	background: $menu-user-count-bg
+	border: $menu-user-count-border
 	top: -5px
 	right: -5px
 
 	
 .navigation-sub-menu-arrow
-	$size: 8px
+	$size: 7px
 	position: absolute
 	width: $size
 	height: $size
 	left: 50%
-	bottom: 15%
+	bottom: $menu-arrow-offset
 	transform: translateX( -$size/2 )
 	svg
 		display: block
 		width: 100%
 		height: 100%
-		transform: scale( 1.2, 1 )
+		transform: scale( 1.4, 1 )
 		path
-			fill: #fff
+			fill: $menu-text-color
 
 .navigation-sub-menu
 	transform: scale(0,0)
-	top: 86px
+	top: $menu-height
 	position: absolute
 	display: flex
-	background: rgba($header-bg, 0.97)
+	background: $sub-menu-bg
 	opacity: 0
 	transition: opacity 0.1s linear
 
@@ -152,17 +160,17 @@
 
 
 .navigation-sub-menu-list-link__a
-	color: darken(invert($menu-bg), 25%)
-	font-size: 14px
+	color: $sub-menu-text-color
+	font-size: $sub-menu-font-size
 	white-space: nowrap
-	font-weight: lighter
+	//font-weight: lighter
 	&:hover
-		color: invert($menu-bg)
+		color: $sub-menu-text-color-hover
 	&:before
-		content: '-'
+		content: $sub-menu-pre-text
 		display: inline-block
 		padding-right: 4px
-		color: #fff
+		color: $sub-menu-pre-text-color
 
 .navigation-sub-menu-list-link
 	display: flex
@@ -171,9 +179,9 @@
 
 
 .navigation-sub-menu-list__header
-	color: $main-color-2
+	color: $sub-menu-header-font-color
 	font-weight: bold
-	font-size: 16px
+	font-size: $sub-menu-header-font-size
 	margin-bottom: 5px
 	text-align: center
 	white-space: nowrap

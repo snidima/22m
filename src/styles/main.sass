@@ -37,13 +37,7 @@ a
 	width: 1197px
 	margin: 0 auto
 	
-.main-logo
-	path:nth-of-type(1)
-		fill: $main-color-1
-	path:nth-of-type(2)
-		fill: $main-color-2
-	path:nth-of-type(3)
-		fill: #fff
+
 
 .main-h1
 	text-align: center
@@ -53,10 +47,11 @@ a
 	font-weight: lighter
 	margin: 0
 .main-h1_dark
-	background: $menu-bg
-	color: #fff
+	background: #fff
+	box-shadow: 0 0 30px rgba(0,0,0,0.4)
+	color: #525252
 .main-h1_light
-	background: #c7c7c7
+	background: #ffffff
 	color: #464646
 
 .about-company
@@ -72,10 +67,9 @@ a
 	cursor: pointer
 	text-decoration: none
 	transform: translateY(0px)
-	box-shadow: 0 0 10px rgba(0,0,0,0.35)
 	&:active
 		transform: translateY(1px)
-		box-shadow: 0 0 10px rgba(0,0,0,0.65)
+
 .btn__medium
 	font-size: 14px
 .btn__color-1
@@ -96,3 +90,55 @@ a
 		text-decoration: none
 .main-link__small
 	font-size: 12px
+
+
+.loader
+	margin: 50px auto
+	height: 30px
+	text-align: center
+
+
+.loader__item
+	background-color: $loader-color
+	height: 100%
+	width: 6px
+	display: inline-block
+	-webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out
+	animation: sk-stretchdelay 1.2s infinite ease-in-out
+	+margin-right(3px)
+
+
+.loader-item-2
+	-webkit-animation-delay: -1.1s
+	animation-delay: -1.1s
+
+
+.loader-item-3
+	-webkit-animation-delay: -1.0s
+	animation-delay: -1.0s
+
+.loader-item-4
+	-webkit-animation-delay: -0.9s
+	animation-delay: -0.9s
+
+.loader-item-5
+	-webkit-animation-delay: -0.8s
+	animation-delay: -0.8s
+
+
+@-webkit-keyframes sk-stretchdelay
+	0%, 40%, 100%
+		-webkit-transform: scaleY(0.4)
+	20%
+		-webkit-transform: scaleY(1.0)
+
+
+@keyframes sk-stretchdelay
+	0%, 40%, 100%
+		transform: scaleY(0.4)
+		-webkit-transform: scaleY(0.4)
+
+	20%
+		transform: scaleY(1.0)
+		-webkit-transform: scaleY(1.0)
+

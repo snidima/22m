@@ -36,12 +36,24 @@ module.exports = React.createClass({
                     </div>
                 )
             });
-
-        return (
-            <div className="item-container">
-                {el}
-            </div>
-        )
+        if ( this.state.tshirts)
+            return (
+                <div className="item-container">
+                    {el}
+                </div>
+            );
+        else
+            return (
+                <div className="item-container">
+                    <div className="loader">
+                        <div className="loader__item loader-item-1"></div>
+                        <div className="loader__item loader-item-2"></div>
+                        <div className="loader__item loader-item-3"></div>
+                        <div className="loader__item loader-item-4"></div>
+                        <div className="loader__item loader-item-5"></div>
+                    </div>
+                </div>
+            );
 
     }
 

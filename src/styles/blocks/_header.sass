@@ -20,7 +20,13 @@
 		height: 100%
 		padding: 2px 0
 
-
+.main-logo
+	path:nth-of-type(1)
+		fill: $logo-color-1
+	path:nth-of-type(2)
+		fill: $logo-color-2
+	path:nth-of-type(3)
+		fill: $logo-color-3
 
 
 
@@ -37,22 +43,21 @@
 	align-items: center
 	cursor: pointer
 	&:hover
-		$color: #e1e1e1
 		.header-contacts-item__icon > svg
 			path
-				fill: $color
+				fill: $header-text-hover-color
 		.header-contacts-item__text
-			color: $color
+			color: $header-text-hover-color
 
 .header-contacts-item__icon > svg
 	width:  16px
 	height: 16px
 	display: block
 	path
-		fill: #ffffff
+		fill: $header-text-color
 
 .header-contacts-item__text
-	color: #ffffff
+	color: $header-text-color
 	font-size: 12px
 	padding-left: 3px
 
@@ -70,10 +75,10 @@
 	display: block
 	cursor: pointer
 	path
-		fill: #ffffff
+		fill: $header-text-color
 	&:hover
 		path
-			fill: #e1e1e1
+			fill: $header-text-hover-color
 			
 
 
